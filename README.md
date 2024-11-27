@@ -1,77 +1,92 @@
-# Country Selection Form
+# Country Form Submission Project
 
-This is a simple ADA-compliant form that allows users to select their country from a dropdown fetched via Google API, and submit personal details like First Name, Last Name, Phone Number, and Email Address.
+## Overview
+This project is a React application designed to allow users to fill out a form with their personal details and select a country from a dynamically fetched list. Upon successful submission, a confirmation message is displayed. The form adheres to WCAG 2.1 accessibility guidelines.
 
-## How to run the app:
-1. Clone the repository
-2. Run `npm install` to install dependencies
-3. Run `npm start` to start the app
+## Features
+- Dynamic fetching of country data from an API.
+- Real-time form validation for required fields and proper formatting (e.g., email validation).
+- Accessible design including proper labels, ARIA attributes, and keyboard navigation.
+- Confirmation message displayed upon successful form submission.
+- Error handling for failed API calls.
+- Basic animations for transitions.
+- Responsive and ADA-compliant design.
 
-### Technologies used:
-- React.js
-- CSS Grid / Flexbox
-- Google Countries API
-- ADA Compliance
+## Components
+### 1. **Form**
+Handles the input fields and form submission logic:
+- Fields: First Name, Last Name, Phone Number, Email Address, and Country.
+- Validates all fields before allowing submission.
+- Displays inline error messages for invalid inputs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. **Confirmation**
+Displays a success message with the user’s first name, email address, and selected country upon successful form submission.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Approach
+### Why Components?
+- **Separation of Concerns:** Dividing the functionality between `Form` and `Confirmation` ensures maintainable and scalable code.
+- **Reusability:** If the confirmation message or form layout needs to be reused elsewhere, it can be easily imported as a standalone component.
 
-### `npm test`
+### Accessibility
+- **Labels and ARIA:** Each input field is labeled with `<label>` tags for screen readers, and ARIA attributes are used to highlight errors.
+- **Keyboard Navigation:** All elements are accessible via keyboard, providing focus indicators.
+- **Color Contrast:** Ensures sufficient contrast for text readability.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### CSS Variables
+- Used for theming and easy customization of colors and styles.
 
-### `npm run build`
+### Error Handling
+- Displays an error message in case the API call fails to fetch the list of countries.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Animations
+- Applied a fade-in effect for the confirmation message using CSS transitions.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Challenges
+1. **Dynamic API Data:** Handling edge cases such as failed API calls and empty responses required robust error handling.
+2. **Accessibility Compliance:** Ensuring the design met WCAG 2.1 guidelines involved adding ARIA roles, labels, and proper focus management.
+3. **Validation:** Implementing real-time form validation for various field types without external libraries required extra effort.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/country-form-submission.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd country-form-submission
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+## Technologies Used
+- React
+- JavaScript (ES6+)
+- Fetch API
+- CSS (with variables for theming)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Structure
+```
+src/
+├── components/
+│   ├── Form.js
+│   ├── Confirmation.js
+├── App.js
+├── App.css
+├── index.js
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Accessibility Compliance
+This project adheres to WCAG 2.1 guidelines:
+- Proper labeling of form fields.
+- Keyboard accessibility.
+- Screen reader-friendly messages.
+- High contrast colors for readability.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
+## Contact
+If you have any questions, feel free to contact Dmytro Shkuropatenko (mailto:shkuropatenko.d@gmail.com).
