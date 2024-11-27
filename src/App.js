@@ -1,93 +1,50 @@
 import React, { useState, useEffect } from "react";
+import Form from "./components/Form";
+import Confirmation from "./components/Confirmation";
 import "./styles/Form.css";
 
-function App() {
+const App = () => {
   const [countries, setCountries] = useState([]);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    email: "",
-    country: "",
-  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [confirmation, setConfirmation] = useState(null);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
-      .then((data) => setCountries(data))
-      .catch((error) => console.error("Error fetching countries:", error));
+    fetchCountries();
   }, []);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const fetchCountries = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("https://restcountries.com/v3.1/all");
+      if (!response.ok) throw new Error("Failed to fetch countries.");
+      const data = await response.json();
+      const countryNames = data.map((country) => country.name.common).sort();
+      setCountries(countryNames);
+      setError("");
+    } catch (err) {
+      setError("Could not load countries. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic
+  const handleFormSubmit = (formData) => {
+    setConfirmation(formData);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        First Name:
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label>
-        Last Name:
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label>
-        Phone Number:
-        <input
-          type="tel"
-          name="phoneNumber"
-          value={formData.phoneNumber}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label>
-        Email:
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label>
-        Country:
-        <select
-          name="country"
-          value={formData.country}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select your country</option>
-          {countries.map((country) => (
-            <option key={country.cca2} value={country.name.common}>
-              {country.name.common}
-            </option>
-          ))}
-        </select>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="app">
+      <h1>Country Selection Form</h1>
+      <Form
+        countries={countries}
+        loading={loading}
+        error={error}
+        onSubmit={handleFormSubmit}
+      />
+      {confirmation && <Confirmation data={confirmation} />}
+    </div>
   );
-}
+};
 
 export default App;
