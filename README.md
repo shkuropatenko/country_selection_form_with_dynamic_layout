@@ -1,12 +1,17 @@
-# Getting Started with Create React App
+# Country Selection Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple ADA-compliant form that allows users to select their country from a dropdown fetched via Google API, and submit personal details like First Name, Last Name, Phone Number, and Email Address.
 
-## Available Scripts
+## How to run the app:
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Run `npm start` to start the app
 
-In the project directory, you can run:
-
-### `npm start`
+### Technologies used:
+- React.js
+- CSS Grid / Flexbox
+- Google Countries API
+- ADA Compliance
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -68,3 +73,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
