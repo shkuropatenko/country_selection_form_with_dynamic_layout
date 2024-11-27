@@ -11,12 +11,20 @@ function App() {
     country: "",
   });
 
+  useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => setCountries(data))
+      .catch((error) => console.error("Error fetching countries:", error));
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Handle form submission logic
   };
 
   return (
