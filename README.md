@@ -74,10 +74,14 @@ Displays a success message with the user’s first name, email address, and sele
 ```
 src/
 ├── components/
-│   ├── Form.js
-│   ├── Confirmation.js
+│   ├── Form.jsx
+│   ├── Confirmation.jsx
+│   ├── CountrySelector.jsx
+├── styles/
+│   ├── Form.css
+├── utils/
+│   ├── validation.js
 ├── App.js
-├── App.css
 ├── index.js
 ```
 
